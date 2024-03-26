@@ -1,0 +1,39 @@
+[mailbox]
+name=Postfix 3 & Dovecot 2.3 CentOS $releasever - $basearch
+baseurl=https://repo.cooluc.com/mailbox/$releasever/$basearch
+failovermethod=priority
+enabled=1
+gpgkey=https://repo.cooluc.com/MAILBOX-REPO-GPG
+gpgcheck=1
+
+[mailbox-source]
+name=Postfix 3 & Dovecot 2.3 CentOS $releasever - $basearch  - Source
+baseurl=https://repo.cooluc.com/mailbox/$releasever/SRPMS
+failovermethod=priority
+enabled=0
+gpgkey=https://repo.cooluc.com/MAILBOX-REPO-GPG
+gpgcheck=1
+
+[mailbox-devel]
+name=mailbox-devel $releasever - $basearch
+baseurl=https://repo.cooluc.com/devel-last/$releasever/$basearch
+failovermethod=priority
+enabled=1
+gpgkey=https://repo.cooluc.com/MAILBOX-REPO-GPG
+gpgcheck=1
+
+[mailbox-base]
+name=mailbox-base $releasever - $basearch
+baseurl=https://repo.cooluc.com/base/$releasever/$basearch
+failovermethod=priority
+enabled=1
+gpgkey=https://repo.cooluc.com/MAILBOX-REPO-GPG
+gpgcheck=1
+
+[mailbox-kernel]
+name=mailbox-base $releasever - $basearch
+baseurl=https://repo.cooluc.com/kernel/$releasever/$basearch
+failovermethod=priority
+enabled=1
+gpgkey=https://repo.cooluc.com/MAILBOX-REPO-GPG
+gpgcheck=1
