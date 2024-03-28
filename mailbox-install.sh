@@ -1,4 +1,5 @@
 #!/bin/bash
+claer
 echo "要打印的文字或变量"
 RED_COLOR='\e[1;31m'
 GREEN_COLOR='\e[1;32m'
@@ -7,7 +8,7 @@ BLUE_COLOR='\e[1;34m'
 PINK_COLOR='\e[1;35m'
 SHAN='\e[1;33;5m'
 RES='\e[0m'
-clear
+
 NOTE='
 
               MailBox - www.cooluc.com
