@@ -34,7 +34,7 @@ else
     platform=`arch`;
 fi
 
-echo 'uid check successfull'
+
 
 # Check Ports
 check_port() {
