@@ -35,9 +35,10 @@ else
     setenforce 0
     platform=`arch`;
 fi
-echo "检查uid结束"
+echo "开始检查端口"
 # Check Ports
 check_port() {
+    echo "？？？"
     echo -en "\r\nCheck the system ports ..."
     if ! command -v netstat >/dev/null 2>&1; then
         yum install -y net-tools > /dev/null 2>&1
@@ -67,6 +68,7 @@ check_port() {
         echo -e "    [ ${GREEN_COLOR}OK${RES} ]"
     fi
 }
+echo "开始设置域名"
 
 domain() {
     echo -e "\r\n设置域名，格式: ${GREEN_COLOR}example.com${RES}"
@@ -88,7 +90,7 @@ domain() {
         fi
     fi
 }
-
+echo "EOF"
 # Install Core packages
 install_rpm() {
     echo -e "\r\n${GREEN_COLOR}Install the Core packages ...${RES}\r\n"
@@ -127,7 +129,9 @@ failovermethod=priority
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 gpgcheck=0
+
 EOF
+    echo "EOF"
     fi
 
     # Add repository
@@ -626,6 +630,7 @@ uninstall() {
 }
 
 # check System version
+echo "check System version"
 osversion=`cat /etc/redhat-release|sed -r 's/.* ([0-9]+)\..*/\1/'`
 if [ $osversion != 7 ]; then
     echo -e "\r\n${RED_COLOR}Error: Please replace the CentOS7 or RedHat7 system install.${RES}\r\n"
@@ -633,10 +638,12 @@ if [ $osversion != 7 ]; then
 fi
 
 # GetIP
+echo "getip"
 ip_info=`curl -s https://ip.cooluc.com`;
 isCN=`echo $ip_info | grep -Po 'country_code\":"\K[^"]+'`;
 
 # Curl progress bar
+echo "Curl progress bar"
 if curl --help | grep progress-bar >/dev/null 2>&1; then # --progress-bar
     CURL_BAR="--progress-bar";
 fi
