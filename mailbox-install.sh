@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "要打印的文字或变量"
 RED_COLOR='\e[1;31m'
 GREEN_COLOR='\e[1;32m'
 YELLOW_COLOR='\e[1;33m'
