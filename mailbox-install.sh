@@ -1,6 +1,6 @@
 #!/bin/bash
 claer
-echo "要打印的文字或变量"
+echo "开始任务"
 RED_COLOR='\e[1;31m'
 GREEN_COLOR='\e[1;32m'
 YELLOW_COLOR='\e[1;33m'
@@ -25,7 +25,7 @@ NOTE='
 ---------------------------------------------------------
 ';
 echo -e "${GREEN_COLOR}$NOTE${RES}\r\n"
-
+echo "检查uid"
 # Check uid
 if [ "$(id -u)" != "0" ]; then
     echo -e "\r\n${RED_COLOR}Error: root user is required to run install.${RES}\r\n" 1>&2
@@ -35,7 +35,7 @@ else
     setenforce 0
     platform=`arch`;
 fi
-
+echo "检查uid结束"
 # Check Ports
 check_port() {
     echo -en "\r\nCheck the system ports ..."
