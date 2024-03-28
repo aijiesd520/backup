@@ -34,8 +34,6 @@ else
     platform=`arch`;
 fi
 
-
-
 # Check Ports
 check_port() {
     echo -en "\r\nCheck the system ports ..."
@@ -134,8 +132,8 @@ EOF
     if ! command -v yum-config-manager >/dev/null 2>&1; then
         yum install -y yum-utils
     fi
-    rpm --import https://raw.githubusercontent.com/aijiesd520/backup/main/MAILBOX-REPO-GPG
-    yum-config-manager --add-repo https://raw.githubusercontent.com/aijiesd520/backup/main/mailbox.repo
+    rpm --import https://repo.cooluc.com/MAILBOX-REPO-GPG
+    yum-config-manager --add-repo https://repo.cooluc.com/mailbox.repo
 
     # Remove packages
     yum remove -y sendmail postfix* dovecot*
@@ -413,7 +411,7 @@ install_mariadb() {
     if ! netstat -lnp|grep 3306 >/dev/null 2>&1;then
         echo -e "\r\n${RED_COLOR}The MariaDB failed to startup and the installation was terminated. Please try again with a brand new CentOS 7 or RedHat 7 system.${RES}\r\n"
         exit 0;
-    fi1
+    fi
     echo -e "${GREEN_COLOR}Create MariaDB mailbox user/database ...${RES}\r\n"
     mysql -uroot <<EOF
 create user 'mailbox'@'localhost' identified by '$mysqlpassword';
@@ -633,7 +631,8 @@ if [ $osversion != 7 ]; then
 fi
 
 # GetIP
-
+ip_info=`curl -s https://ip.cooluc.com`;
+isCN=`echo $ip_info | grep -Po 'country_code\":"\K[^"]+'`;
 
 # Curl progress bar
 if curl --help | grep progress-bar >/dev/null 2>&1; then # --progress-bar
